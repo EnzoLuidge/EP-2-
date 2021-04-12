@@ -14,3 +14,16 @@ def extrai_valor(carta):
     for i in lista:
         if i in carta:
             return i
+            
+def lista_movimentos_possiveis(cartas,i):
+    lista_movimento = []
+    if i == 0:
+        return []
+    else:
+        if extrai_valor(cartas[i]) in cartas[i-1] or extrai_naipe(cartas[i]) in cartas[i-1]:
+            lista_movimento.append(1)
+        if i > 2:
+            if extrai_valor(cartas[i]) in cartas[i-3] or extrai_naipe(cartas[i]) in cartas[i-3]:
+                lista_movimento.append(3)
+
+    return lista_movimento 
