@@ -8,3 +8,9 @@ def extrai_naipe(carta):
     for i in lista_naipe:
         if i in carta:
             return i
+
+def extrai_valor(carta):
+    lista = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
+    for i in lista:
+        if i in carta:
+            return i
