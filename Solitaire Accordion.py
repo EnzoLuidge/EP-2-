@@ -35,3 +35,8 @@ def possui_movimentos_possiveis(cartas):
             if extrai_valor(cartas[i]) in cartas[i-3] or extrai_naipe(cartas[i]) in cartas[i-3]:
                 return True
     return False
+    
+def empilha(baralho,o,d):
+    baralho[d] = baralho[o]
+    del baralho[o]
+    return baralho
