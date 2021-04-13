@@ -15,6 +15,7 @@ def extrai_valor(carta):
             return i
 
 def lista_movimentos_possiveis(cartas,i):
+    i=int(i)
     lista_movimento = []
     if i == 0:
         return []
@@ -36,6 +37,8 @@ def possui_movimentos_possiveis(cartas):
     return False
     
 def empilha(baralho,o,d):
+    o = int(o)
+    d = int(d)
     baralho[d] = baralho[o]
     del baralho[o]
     return baralho
@@ -60,11 +63,23 @@ while i < 53:
     del lista_baralho[lista_baralho.index(x)]
     novo_baralho.append(x)
     i +=1
-    
-numero_escolhido=input("Escolha uma carta (digite um número entre 1 e 52): ")
-movimento= False
-while movimento == False: 
-    if movimento_possivel(novo_baralho,numero_escolhido) == False:
-        numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e 52: ".format(novo_baralho[int(numero_escolhido)-1]))
-    else:
-        movimento = True
+while possui_movimentos_possiveis(novo_baralho) == True:
+    numero_escolhido=input("Escolha uma carta (digite um número entre 1 e 52): ")
+    movimento= False
+    while movimento == False: 
+        if movimento_possivel(novo_baralho,numero_escolhido) == False:
+            numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e 52: ".format(novo_baralho[int(numero_escolhido)-1]))
+        else:
+            movimento = True
+
+##não funciona direito, precisa de ajuste
+##Tentativa de fazer as condições para empilhar
+
+    if lista_movimentos_possiveis(novo_baralho,numero_escolhido) == [1]:
+        empilha(novo_baralho,numero_escolhido,(int(numero_escolhido)-1))
+    elif lista_movimentos_possiveis(novo_baralho,numero_escolhido) == [3]:
+        empilha(novo_baralho,numero_escolhido,numero_escolhido-3)
+    elif lista_movimentos_possiveis(novo_baralho,numero_escolhido) == [1,3]:
+        print("Sobre qual carta você quer empilhar o {0}?".format(novo_baralho[int(numero_escolhido)-1]))
+        print("  1. {0}".format(novo_baralho[int(numero_escolhido)-2]))
+        print("  2. {0}".format(novo_baralho[int(numero_escolhido)-4]))
