@@ -72,9 +72,10 @@ while jogar == "s":
             while i < len(novo_baralho)+1:
                 print("{0}.  {1}".format(i,novo_baralho[i-1]))
                 i+=1
+## precisa arrumar essa checagem de strings/inteiros
 
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
-        while ((type(numero_escolhido) is not int) == False) or int(numero_escolhido) <= 0 or int(numero_escolhido) >= (52-volta):
+        while :
             numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}.".format(52-volta))
         movimento= False
         while movimento == False: 
