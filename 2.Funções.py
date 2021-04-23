@@ -74,7 +74,7 @@ while jogar == "s":
                 i+=1
 
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
-        while ((type(numero_escolhido) is int) == False) or numero_escolhido <= 0 or numero_escolhido >= (52-volta):
+        while ((type(numero_escolhido) is not int) == False) or int(numero_escolhido) <= 0 or int(numero_escolhido) >= (52-volta):
             numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}.".format(52-volta))
         movimento= False
         while movimento == False: 
