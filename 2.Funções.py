@@ -30,7 +30,7 @@ while jogar == "s":
         return lista_movimento 
 
     def possui_movimentos_possiveis(cartas):
-        for i in range(len(cartas)):
+        for i in range(1,len(cartas)):
             if extrai_valor(cartas[i]) in cartas[i-1] or extrai_naipe(cartas[i]) in cartas[i-1]:
                     return True
             if i > 2:
@@ -75,6 +75,7 @@ while jogar == "s":
         del lista_baralho[lista_baralho.index(x)]
         novo_baralho.append(x)
         i +=1
+    
     while possui_movimentos_possiveis(novo_baralho) == True:
         if i==1:
             print("O estado atual do baralho é: ")
@@ -90,12 +91,13 @@ while jogar == "s":
         while movimento == False: 
             if numero_escolhido.isnumeric() == False:
                 numero_escolhido=input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
+            elif int(numero_escolhido) > 52-volta or int(numero_escolhido)<1 or numero_escolhido == "":
+                numero_escolhido=input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
             elif movimento_possivel(novo_baralho,numero_escolhido) == False:
                 numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format((novo_baralho[int(numero_escolhido)-1]),52-volta))
             else:
                 movimento = True
-##Tentativa de fazer as condições para empilhar
-        
+
         if lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [1]:
             novo_baralho = empilha(novo_baralho,numero_escolhido,int(numero_escolhido)-1)
         elif lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [3]:
