@@ -46,11 +46,20 @@ while jogar == "s":
         return baralho
 
     def movimento_possivel(cartas,i):
+        if i == "":
+            return False
         i = int(i)
+        if i == 1:
+            return False
+        
         if extrai_valor(cartas[i-1]) in cartas[i-2] or extrai_naipe(cartas[i-1]) in cartas[i-2]:
             return True
-        if extrai_valor(cartas[i-1]) in cartas[i-4] or extrai_naipe(cartas[i-1]) in cartas[i-4]:
-            return True
+        
+        if i>3:
+            if extrai_valor(cartas[i-1]) in cartas[i-4] or extrai_naipe(cartas[i-1]) in cartas[i-4]:
+                return True
+            else:
+                return False
         else:
             return False
 
@@ -76,18 +85,15 @@ while jogar == "s":
 
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
         while numero_escolhido.isnumeric() == False:
-            numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}.".format(52-volta))
-        while int(numero_escolhido) > 52-volta or int(numero_escolhido)<1:
-            numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}.".format(52-volta))
-        movimento= False
+            numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
+        while int(numero_escolhido) > 52-volta or int(numero_escolhido)<1 or numero_escolhido=="":
+            numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
+        movimento = False
         while movimento == False: 
-            if int(numero_escolhido) == 1:
-                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}".format(novo_baralho[int(numero_escolhido)-1]),52-volta)
-            elif movimento_possivel(novo_baralho,numero_escolhido) == False:
-                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}".format(novo_baralho[int(numero_escolhido)-1]),52-volta)
+            if movimento_possivel(novo_baralho,numero_escolhido) == False:
+                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format((novo_baralho[int(numero_escolhido)-1]),52-volta))
             else:
                 movimento = True
-            
 ##Tentativa de fazer as condições para empilhar
         
         if lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [1]:
@@ -106,7 +112,6 @@ while jogar == "s":
                 novo_baralho = empilha(novo_baralho,numero_escolhido,(int(numero_escolhido)-1))
             elif decisao == "2":
                 novo_baralho = empilha(novo_baralho,numero_escolhido,(int(numero_escolhido)-3))
-        
         i = 1
         volta +=1
     if len(novo_baralho) == 1:
