@@ -81,16 +81,16 @@ while jogar == "s":
             while i < len(novo_baralho)+1:
                 print("{0}.  {1}".format(i,novo_baralho[i-1]))
                 i+=1
-## precisa arrumar essa checagem de strings/inteiros
-
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
         while numero_escolhido.isnumeric() == False:
             numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
-        while int(numero_escolhido) > 52-volta or int(numero_escolhido)<1 or numero_escolhido=="":
+        while int(numero_escolhido) > 52-volta or int(numero_escolhido)<1 or numero_escolhido =="":
             numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
         movimento = False
         while movimento == False: 
-            if movimento_possivel(novo_baralho,numero_escolhido) == False:
+            if numero_escolhido.isnumeric() == False:
+                numero_escolhido=input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
+            elif movimento_possivel(novo_baralho,numero_escolhido) == False:
                 numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format((novo_baralho[int(numero_escolhido)-1]),52-volta))
             else:
                 movimento = True
