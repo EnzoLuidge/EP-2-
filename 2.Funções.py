@@ -1,7 +1,8 @@
+
 jogar = "s"
 while jogar == "s":
     def cria_baralho():
-        lista_baralho = ['A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠','A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥','A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦','A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣']
+        lista_baralho = ['\033[1;34mA♠\033[m','\033[1;34m2♠\033[m','\033[1;34m3♠\033[m','\033[1;34m4♠\033[m','\033[1;34m5♠\033[m','\033[1;34m6♠\033[m','\033[1;34m7♠\033[m','\033[1;34m8♠\033[m','\033[1;34m9♠\033[m','\033[1;34m10♠\033[m','\033[1;34mJ♠\033[m','\033[1;34mQ♠\033[m','\033[1;34mK♠\033[m','\033[1;31mA♥\033[m','\033[1;31m2♥\033[m','\033[1;31m3♥\033[m','\033[1;31m4♥\033[m','\033[1;31m5♥\033[m','\033[1;31m6♥\033[m','\033[1;31m7♥\033[m','\033[1;31m8♥\033[m','\033[1;31m9♥\033[m','\033[1;31m10♥\033[m','\033[1;31mJ♥\033[m','\033[1;31mQ♥\033[m','\033[1;31mK♥\033[m','\033[1;35mA♦\033[m','\033[1;35m2♦\033[m','\033[1;35m3♦\033[m','\033[1;35m4♦\033[m','\033[1;35m5♦\033[m','\033[1;35m6♦\033[m','\033[1;35m7♦\033[m','\033[1;35m8♦\033[m','\033[1;35m9♦\033[m','\033[1;35m10♦\033[m','\033[1;35mJ♦\033[m','\033[1;35mQ♦\033[m','\033[1;35mK♦\033[m','\033[1;92mA♣\033[m','\033[1;92m2♣\033[m','\033[1;92m3♣\033[m','\033[1;92m4♣\033[m','\033[1;92m5♣\033[m','\033[1;92m6♣\033[m','\033[1;92m7♣\033[m','\033[1;92m8♣\033[m','\033[1;92m9♣\033[m','\033[1;92m10♣\033[m','\033[1;92mJ♣\033[m','\033[1;92mQ♣\033[m','\033[1;92mK♣\033[m']
         return lista_baralho
 
     def extrai_naipe(carta):
@@ -62,7 +63,17 @@ while jogar == "s":
                 return False
         else:
             return False
-
+    print("Paciência Acordeão")
+    print("==================\n")
+    print("Seja bem vindo(a) ao jogo de Paciência Acordeão! O objetivo deste jogo é colocar todas as cartas em uma mesma pilha.\n")
+    print("Existem apenas dois movimentos possíveis:\n")
+    print("1. Empilhar uma carta sobre a carta imediatamente anterior;")
+    print("2. Empilhar uma carta sobre a terceira carta anterior.\n")
+    print("Para que um movimento possa ser realizado basta que uma das duas condições abaixo seja atendida:\n")
+    print("1. As duas cartas possuem o mesmo valor ou")
+    print("2. As duas cartas possuem o mesmo naipe.\n")
+    print("Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada.\n")
+    input("Aperte [Enter] para iniciar o jogo...")
     volta = 0
     print("O estado atual do baralho é:")
     import random
