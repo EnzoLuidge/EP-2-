@@ -75,17 +75,21 @@ while jogar == "s":
 ## precisa arrumar essa checagem de strings/inteiros
 
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
-        while :
+        while numero_escolhido.isnumeric() == False:
+            numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}.".format(52-volta))
+        while int(numero_escolhido) > 52-volta or int(numero_escolhido)<1:
             numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}.".format(52-volta))
         movimento= False
         while movimento == False: 
-            if movimento_possivel(novo_baralho,numero_escolhido) == False:
-                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e 52: ".format(novo_baralho[int(numero_escolhido)-1]))
+            if int(numero_escolhido) == 1:
+                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}".format(novo_baralho[int(numero_escolhido)-1]),52-volta)
+            elif movimento_possivel(novo_baralho,numero_escolhido) == False:
+                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}".format(novo_baralho[int(numero_escolhido)-1]),52-volta)
             else:
                 movimento = True
-
+            
 ##Tentativa de fazer as condições para empilhar
-
+        
         if lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [1]:
             novo_baralho = empilha(novo_baralho,numero_escolhido,int(numero_escolhido)-1)
         elif lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [3]:
@@ -102,6 +106,7 @@ while jogar == "s":
                 novo_baralho = empilha(novo_baralho,numero_escolhido,(int(numero_escolhido)-1))
             elif decisao == "2":
                 novo_baralho = empilha(novo_baralho,numero_escolhido,(int(numero_escolhido)-3))
+        
         i = 1
         volta +=1
     if len(novo_baralho) == 1:
