@@ -2,7 +2,7 @@
 jogar = "s"
 while jogar == "s":
     def cria_baralho():
-        lista_baralho = ['\033[1;34mA♠\033[m','\033[1;34m2♠\033[m','\033[1;34m3♠\033[m','\033[1;34m4♠\033[m','\033[1;34m5♠\033[m','\033[1;34m6♠\033[m','\033[1;34m7♠\033[m','\033[1;34m8♠\033[m','\033[1;34m9♠\033[m','\033[1;34m10♠\033[m','\033[1;34mJ♠\033[m','\033[1;34mQ♠\033[m','\033[1;34mK♠\033[m','\033[1;31mA♥\033[m','\033[1;31m2♥\033[m','\033[1;31m3♥\033[m','\033[1;31m4♥\033[m','\033[1;31m5♥\033[m','\033[1;31m6♥\033[m','\033[1;31m7♥\033[m','\033[1;31m8♥\033[m','\033[1;31m9♥\033[m','\033[1;31m10♥\033[m','\033[1;31mJ♥\033[m','\033[1;31mQ♥\033[m','\033[1;31mK♥\033[m','\033[1;35mA♦\033[m','\033[1;35m2♦\033[m','\033[1;35m3♦\033[m','\033[1;35m4♦\033[m','\033[1;35m5♦\033[m','\033[1;35m6♦\033[m','\033[1;35m7♦\033[m','\033[1;35m8♦\033[m','\033[1;35m9♦\033[m','\033[1;35m10♦\033[m','\033[1;35mJ♦\033[m','\033[1;35mQ♦\033[m','\033[1;35mK♦\033[m','\033[1;92mA♣\033[m','\033[1;92m2♣\033[m','\033[1;92m3♣\033[m','\033[1;92m4♣\033[m','\033[1;92m5♣\033[m','\033[1;92m6♣\033[m','\033[1;92m7♣\033[m','\033[1;92m8♣\033[m','\033[1;92m9♣\033[m','\033[1;92m10♣\033[m','\033[1;92mJ♣\033[m','\033[1;92mQ♣\033[m','\033[1;92mK♣\033[m']
+        lista_baralho = ['A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠','A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥','A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦','A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣']
         return lista_baralho
 
     def extrai_naipe(carta):
@@ -93,6 +93,7 @@ while jogar == "s":
             while i < len(novo_baralho)+1:
                 print("{0}.  {1}".format(i,novo_baralho[i-1]))
                 i+=1
+    ##escolha de carta
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
         while numero_escolhido.isnumeric() == False:
             numero_escolhido = input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
@@ -108,7 +109,7 @@ while jogar == "s":
                 numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format((novo_baralho[int(numero_escolhido)-1]),52-volta))
             else:
                 movimento = True
-
+##empilhando
         if lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [1]:
             novo_baralho = empilha(novo_baralho,numero_escolhido,int(numero_escolhido)-1)
         elif lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [3]:
@@ -118,7 +119,7 @@ while jogar == "s":
             print("  1. {0}".format(novo_baralho[int(numero_escolhido)-2]))
             decisao = input("  2. {0} ".format(novo_baralho[int(numero_escolhido)-4]))
             while decisao != '1' and decisao != '2':
-                print("Opção inválida. Sobre qual carta você quer empilhar o {0}? digite 1 ou 2: ")
+                print("Opção inválida. Sobre qual carta você quer empilhar o {0}? digite 1 ou 2: ".format(novo_baralho[int(numero_escolhido)-1]))
                 print("  1. {0}".format(novo_baralho[int(numero_escolhido)-2]))
                 decisao = input("  2. {0} ".format(novo_baralho[int(numero_escolhido)-4]))
             if decisao == "1":
