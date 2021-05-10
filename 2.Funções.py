@@ -1,5 +1,6 @@
 jogar = "s"
 while jogar == "s":
+    
     def cria_baralho():
         lista_baralho = ['A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠','A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥','A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦','A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣']
         return lista_baralho
@@ -9,6 +10,16 @@ while jogar == "s":
         for i in lista_naipe:
             if i in carta:
                 return i
+
+    def baralho_colorido(i):
+        if extrai_naipe(i) == '♥':
+            return (('\033[1;34m{0}\033[m').format(i))
+        elif extrai_naipe(i) == '♦':
+            return (('\033[1;31m{0}\033[m').format(i))
+        elif extrai_naipe(i) == '♠':
+            return (('\033[1;35m{0}\033[m').format(i))
+        elif extrai_naipe(i) == '♣':
+            return (('\033[1;92m{0}\033[m').format(i))
 
     def extrai_valor(carta):
         lista = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
@@ -81,16 +92,17 @@ while jogar == "s":
     novo_baralho = []
     while i < 53:
         x = ''.join(random.sample(lista_baralho,1))
-        print("{0}.  {1}".format(i,x))
+        print("{0}.  {1}".format(i,baralho_colorido(x)))
         del lista_baralho[lista_baralho.index(x)]
         novo_baralho.append(x)
         i +=1
+        
     
     while possui_movimentos_possiveis(novo_baralho) == True:
         if i==1:
             print("O estado atual do baralho é: ")
             while i < len(novo_baralho)+1:
-                print("{0}.  {1}".format(i,novo_baralho[i-1]))
+                print("{0}.  {1}".format(i,baralho_colorido(novo_baralho[i-1])))
                 i+=1
     ##escolha de carta
         numero_escolhido=input("Escolha uma carta (digite um número entre 1 e {0}): ".format(52-volta))
@@ -105,7 +117,7 @@ while jogar == "s":
             elif int(numero_escolhido) > 52-volta or int(numero_escolhido)<1 or numero_escolhido == "":
                 numero_escolhido=input("Posição inválida. Por favor, digite um número entre 1 e {0}: ".format(52-volta))
             elif movimento_possivel(novo_baralho,numero_escolhido) == False:
-                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format((novo_baralho[int(numero_escolhido)-1]),52-volta))
+                numero_escolhido=input("A carta {0} não pode ser movida. Por favor, digite um número entre 1 e {1}: ".format((baralho_colorido(novo_baralho[int(numero_escolhido)-1])),52-volta))
             else:
                 movimento = True
 ##empilhando
@@ -114,13 +126,13 @@ while jogar == "s":
         elif lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [3]:
             novo_baralho = empilha(novo_baralho,numero_escolhido,int(numero_escolhido)-3)
         elif lista_movimentos_possiveis(novo_baralho,int(numero_escolhido)-1) == [1,3]:
-            print("Sobre qual carta você quer empilhar o {0}?".format(novo_baralho[int(numero_escolhido)-1]))
-            print("  1. {0}".format(novo_baralho[int(numero_escolhido)-2]))
-            decisao = input("  2. {0} ".format(novo_baralho[int(numero_escolhido)-4]))
+            print("Sobre qual carta você quer empilhar o {0}?".format(baralho_colorido(novo_baralho[int(numero_escolhido)-1])))
+            print("  1. {0}".format(baralho_colorido(novo_baralho[int(numero_escolhido)-2])))
+            decisao = input("  2. {0} ".format(baralho_colorido(novo_baralho[int(numero_escolhido)-4])))
             while decisao != '1' and decisao != '2':
-                print("Opção inválida. Sobre qual carta você quer empilhar o {0}? digite 1 ou 2: ".format(novo_baralho[int(numero_escolhido)-1]))
-                print("  1. {0}".format(novo_baralho[int(numero_escolhido)-2]))
-                decisao = input("  2. {0} ".format(novo_baralho[int(numero_escolhido)-4]))
+                print("Opção inválida. Sobre qual carta você quer empilhar o {0}? digite 1 ou 2: ".format(baralho_colorido(novo_baralho[int(numero_escolhido)-1])))
+                print("  1. {0}".format(baralho_colorido(novo_baralho[int(numero_escolhido)-2])))
+                decisao = input("  2. {0} ".format(baralho_colorido(novo_baralho[int(numero_escolhido)-4])))
             if decisao == "1":
                 novo_baralho = empilha(novo_baralho,numero_escolhido,(int(numero_escolhido)-1))
             elif decisao == "2":
@@ -134,5 +146,3 @@ while jogar == "s":
     jogar = input("Você quer jogar novamente? (digite s ou n): ")
     if jogar != "s": 
         break
-
-    
