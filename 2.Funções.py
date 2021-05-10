@@ -1,4 +1,3 @@
-
 jogar = "s"
 while jogar == "s":
     def cria_baralho():
@@ -132,6 +131,8 @@ while jogar == "s":
         print("Você venceu!!")
     else:
         print("Você perdeu :(. ")
-        jogar = input("Você quer jogar novamente? (digite s ou n): ")
-        if jogar != "s":
-            break
+    jogar = input("Você quer jogar novamente? (digite s ou n): ")
+    if jogar != "s": 
+        break
+
+    
