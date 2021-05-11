@@ -97,7 +97,6 @@ while jogar == "s":
         novo_baralho.append(x)
         i +=1
         
-    
     while possui_movimentos_possiveis(novo_baralho) == True:
         if i==1:
             print("O estado atual do baralho é: ")
